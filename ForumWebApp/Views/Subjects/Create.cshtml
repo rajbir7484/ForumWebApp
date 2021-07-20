@@ -1,0 +1,32 @@
+﻿@model ForumWebApp.Models.Subject
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="text-center">
+    <h1 class="display-4 heading-font">New Subject Details</h1>
+</div>
+<hr />
+<div class="row">
+    <div class="card col-md-4 bg-grey  border-0">
+        <img class="card-img-top img-fluid" src="~/q1.png" alt="" style="width:100%">
+    </div>
+    <div class="col-md-8">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="SubjectName" class="control-label"></label>
+                <input asp-for="SubjectName" class="form-control" />
+                <span asp-validation-for="SubjectName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save Subject Details" class="button button-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

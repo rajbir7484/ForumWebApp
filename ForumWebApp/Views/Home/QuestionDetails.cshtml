@@ -1,0 +1,45 @@
+﻿@model ForumWebApp.Models.Question
+
+@{
+    ViewData["Title"] = "QuestionDetails";
+}
+
+<div class="text-center">
+    <h1 class="display-4 heading-font">@Model.QuestionTitle</h1>
+    <a asp-action="GiveAnswer" class="button button-primary" asp-route-id="@Model.QuestionID">Submit Your Answer</a>
+</div>
+<hr />
+<div class="row">
+    <div class="col-md-12 mb-3">
+        <div class="card-body shadow border border-dark col-md-12 mb-2">
+            <p class="card-text">@Model.QuestionText</p>
+            <p class="card-text">By @Model.UserName On @Model.PostDate</p>            
+        </div>
+    </div>  
+    <div class="col-md-12">
+        <div class="row">
+            @if (Model.Answers.Count == 0)
+            {
+                <div class="col-md-12">
+                    <h1 class="heading-font text-center">There is No Answer for Question.</h1>
+                </div>
+            }
+            else
+            {
+                <div class="col-md-12">
+                    <h1 class="heading-font text-center">All Answers</h1>
+                </div>
+                @foreach (var answer in Model.Answers)
+                {
+                    <div class="col-md-6 mb-3">
+                        <div class="card-body shadow border border-dark col-md-12 mb-2">
+                            <h4 class="card-title">@answer.AnswerText</h4>
+                            <p class="card-text">Posted By @answer.UserName</p>
+                            <p class="card-text">Posted On @answer.AnswerDate</p>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</div>

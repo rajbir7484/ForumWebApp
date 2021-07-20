@@ -1,0 +1,21 @@
+﻿@model IEnumerable<ForumWebApp.Models.Question>
+
+@{
+    ViewData["Title"] = "AllQuestions";
+}
+
+<div class="text-center">
+    <h1 class="display-4 heading-font">All Questions </h1>
+</div>
+<hr />
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-12 mb-3">
+            <div class="card-body shadow border border-dark col-md-12 mb-2">
+                <h4 class="card-title"><a class="font-weight-bold" asp-action="QuestionDetails" asp-route-id="@item.QuestionID"> @item.QuestionTitle</a></h4>
+                <p class="card-text">By @item.UserName On @item.PostDate</p>               
+            </div>
+        </div>
+    }
+</div>

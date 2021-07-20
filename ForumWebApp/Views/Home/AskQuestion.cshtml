@@ -1,0 +1,42 @@
+﻿@model ForumWebApp.Models.Question
+
+@{
+    ViewData["Title"] = "AskQuestion";
+}
+
+<div class="text-center">
+    <h1 class="display-4 heading-font">Ask A Question?</h1>
+</div>
+<hr />
+<div class="row">
+    <div class="card col-md-4 bg-grey  border-0">
+        <img class="card-img-top img-fluid" src="~/q2.png" alt="" style="width:100%">
+    </div>
+    <div class="col-md-8">
+        <form asp-action="AskQuestion">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="SubjectID" class="control-label"></label>
+                <select asp-for="SubjectID" class="form-control" asp-items="ViewBag.SubjectID"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="QuestionTitle" class="control-label"></label>
+                <input asp-for="QuestionTitle" class="form-control" />
+                <span asp-validation-for="QuestionTitle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="QuestionText" class="control-label"></label>
+                <textarea asp-for="QuestionText" class="form-control"></textarea>
+                <span asp-validation-for="QuestionText" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Submit Your Question" class="button button-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,75 @@
+﻿@model ForumWebApp.Models.Question
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<div class="text-center">
+    <h1 class="display-4 heading-font">Question Details</h1>
+</div>
+<hr />
+<div class="row">
+    <div class="card col-md-4 bg-grey  border-0">
+        <img class="card-img-top img-fluid" src="~/q3.png" alt="" style="width:100%">
+    </div>
+    <div class="col-md-8">
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.QuestionTitle)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.QuestionTitle)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.QuestionText)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.QuestionText)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.UserName)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.UserName)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.PostDate)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.PostDate)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Subject)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Subject.SubjectName)
+            </dd>
+        </dl>
+    </div>
+    <div class="col-md-12">
+        <div class="row">
+            @if (Model.Answers.Count == 0)
+            {
+                <div class="col-md-12">
+                    <h1 class="heading-font text-center">There is No Answer for Question.</h1>
+                </div>
+            }
+            else
+            {
+                <div class="col-md-12">
+                    <h1 class="heading-font text-center">All Answers</h1>
+                </div>
+                @foreach (var answer in Model.Answers)
+                {
+                    <div class="col-md-6 mb-3">
+                        <div class="card-body shadow border border-dark col-md-12 mb-2">
+                            <h4 class="card-title">@answer.AnswerText</h4>
+                            <p class="card-text">Posted By @answer.UserName</p>
+                            <p class="card-text">Posted On @answer.AnswerDate</p>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</div>

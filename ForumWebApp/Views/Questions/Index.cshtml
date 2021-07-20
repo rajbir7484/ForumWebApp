@@ -1,0 +1,33 @@
+﻿@model IEnumerable<ForumWebApp.Models.Question>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="text-center">
+    <h1 class="display-4 heading-font">All Question Details</h1>
+    <a asp-action="Create" class="button button-primary">New Question</a>
+</div>
+<hr />
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-6 mb-3">
+            <div class="card-body shadow border border-dark col-md-12 mb-2">
+                <h4 class="card-title">@item.QuestionTitle</h4>
+                <p class="card-text">Posted By @item.UserName</p>
+                <div class="row">
+                    <div class="col-md-4">
+                        <a asp-action="Edit" class="btn btn-info  pl-3 pr-3 " asp-route-id="@item.QuestionID">Edit</a>
+                    </div>
+                    <div class="col-md-4">
+                        <a asp-action="Details" class="btn btn-secondary  pl-3 pr-3 " asp-route-id="@item.QuestionID">View Details</a>
+                    </div>
+                    <div class="col-md-4">
+                        <a asp-action="Delete" class="btn btn-danger  pl-3 pr-3 " asp-route-id="@item.QuestionID">Delete</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

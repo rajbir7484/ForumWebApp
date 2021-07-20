@@ -1,0 +1,48 @@
+﻿@model ForumWebApp.Models.Suggestion
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<div class="text-center">
+    <h1 class="display-4 heading-font">Delete Suggestion Details</h1>
+</div>
+<hr />
+<div class="row">
+    <div class="card col-md-4 bg-grey  border-0">
+        <img class="card-img-top img-fluid" src="~/q3.png" alt="" style="width:100%">
+    </div>
+    <div class="col-md-8">
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.EmailID)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.EmailID)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.SuggestionText)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.SuggestionText)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.SuggestionDate)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.SuggestionDate)
+            </dd>
+        </dl>
+
+        <form asp-action="Delete">
+            <input type="hidden" asp-for="SuggestionID" />
+            <input type="submit" value="Delete This Suggestion" class="btn btn-danger" />
+        </form>
+    </div>
+</div>

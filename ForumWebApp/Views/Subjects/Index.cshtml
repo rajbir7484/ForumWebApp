@@ -1,0 +1,35 @@
+﻿@model IEnumerable<ForumWebApp.Models.Subject>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="text-center">
+    <h1 class="display-4 heading-font">All Subject Details</h1>
+    <a asp-action="Create" class="button button-primary">New Subject</a>
+</div>
+<hr />
+<table class="table table-bordered">
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.SubjectName)
+            </th>
+            <th>Operations</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SubjectName)
+                </td>
+                <td>
+                    <a asp-action="Edit" class="btn btn-info pl-3 pr-3 mr-2" asp-route-id="@item.SubjectID">Edit</a> 
+                    <a asp-action="Delete" class="btn btn-danger pl-3 pr-3" asp-route-id="@item.SubjectID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
